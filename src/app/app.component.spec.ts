@@ -1,35 +1,47 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, tick } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { of } from 'rxjs';
+import { BlockParagraph } from 'src/models/blockParagraph.model';
 import { AppComponent } from './app.component';
+import { DataService } from './services/data.service';
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
+      imports: [RouterTestingModule],
+      providers: [DataService],
+      declarations: [AppComponent],
     }).compileComponents();
-  });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'angular-animation-test'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular-animation-test');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('angular-animation-test app is running!');
+  });
+
+  it('AC001 - ngOnInit will assign the observable data', () => {
+    // arrange
+    const mockData: BlockParagraph[] = [
+      {
+        title: 'Test title',
+        description: 'Test description',
+        imageUrl: 'image.png',
+      },
+    ];
+    const spyOnGetData = spyOn(
+      component['dataService'],
+      'getParagraphData'
+    ).and.returnValue(of(mockData));
+
+    // act
+    component.ngOnInit();
+
+    // assert
+    expect(spyOnGetData).toHaveBeenCalled();
+    component.blockData$.subscribe((blockData) => {
+      expect(blockData).toEqual(mockData);
+    });
   });
 });

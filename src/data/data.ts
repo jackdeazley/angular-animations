@@ -1,7 +1,6 @@
-import { Observable, of } from 'rxjs';
 import { BlockParagraph } from 'src/models/blockParagraph.model';
 
-export const paragraphData$: Observable<BlockParagraph[]> = of([
+export const paragraphData$: BlockParagraph[] = [
   {
     title: 'Heating your home, not the planet',
     description: 'The future of green sustainable heating is already here',
@@ -19,4 +18,4 @@ export const paragraphData$: Observable<BlockParagraph[]> = of([
       'If you have rooftop solar PV a ZEB can automatically store excess electricity produced so you dont unnecessarily export it to the grid',
     imageUrl: 'imageThree.png',
   },
-]);
+];
