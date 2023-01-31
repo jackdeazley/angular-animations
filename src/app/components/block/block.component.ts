@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { HighlightPipe } from 'src/app/shared/highlight.pipe';
 import { BlockParagraph } from 'src/models/blockParagraph.model';
 
 @Component({
@@ -12,8 +13,25 @@ export class BlockComponent implements OnInit {
 
   public svgPoints: string;
 
+  constructor(private hightlightPipe: HighlightPipe) {}
+
   ngOnInit(): void {
     this.svgPoints = this.generateRandomSvgPoints();
+
+    this.blockData.title = this.setHighlightedText(
+      this.blockData.title,
+      this.blockData.highlightedWords
+    );
+
+    this.blockData.description = this.setHighlightedText(
+      this.blockData.description,
+      this.blockData.highlightedWords
+    );
+  }
+
+  public setHighlightedText(text: string, targettedText: string[]): string {
+    const highlightedText = this.hightlightPipe.transform(text, targettedText);
+    return highlightedText;
   }
 
   public generateRandomNumber(maxNumber: number): number {

@@ -3,4 +3,5 @@ export interface BlockParagraph {
   description: string;
   imageUrl: string;
   reverseLayout: boolean;
+  highlightedWords: string[];
 }

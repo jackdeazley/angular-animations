@@ -6,11 +6,15 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class HighlightPipe implements PipeTransform {
   transform(stringValue: string, ...highlightText: any) {
     if (!highlightText) return stringValue;
-    const re = new RegExp('\\b(' + highlightText + '\\b)', 'igm');
-    stringValue = stringValue.replace(
-      re,
-      '<span class="highlighted-text" >$1</span>'
-    );
+
+    for (const text of highlightText[0]) {
+      const re = new RegExp('\\b(' + text + '\\b)', 'igm');
+      stringValue = stringValue.replace(
+        re,
+        '<span class="highlighted-text animated animatedFadeInUp fadeInUp" >$1</span>'
+      );
+    }
+
     return stringValue;
   }
 }
