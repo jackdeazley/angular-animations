@@ -1,10 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { BlockParagraph } from 'src/models/blockParagraph.model';
 
 @Component({
   selector: 'app-block',
   templateUrl: './block.component.html',
   styleUrls: ['./block.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class BlockComponent implements OnInit {
   @Input() blockData: BlockParagraph;

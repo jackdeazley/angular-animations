@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { paragraphData$ } from 'src/data/data';
 import { BlockParagraph } from 'src/models/blockParagraph.model';
 import { DataService } from './services/data.service';
 

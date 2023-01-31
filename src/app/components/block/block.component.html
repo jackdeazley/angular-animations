@@ -3,8 +3,14 @@
   [ngClass]="blockData.reverseLayout ? 'reverse-block' : ''"
 >
   <div class="block-info">
-    <h3 class="block-title">{{ blockData.title }}</h3>
-    <span class="block-description">{{ blockData.description }}</span>
+    <h3
+      class="block-title"
+      [innerHtml]="blockData.title | highlight : 'the'"
+    ></h3>
+    <p
+      class="block-description"
+      [innerHtml]="blockData.description | highlight : 'the'"
+    ></p>
 
     <svg class="blob" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
       <path

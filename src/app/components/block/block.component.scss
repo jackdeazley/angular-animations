@@ -1,4 +1,4 @@
-@import '../../../variables';
+@import '../../../_variables.scss';
 
 .block-container {
   display: flex;
@@ -8,7 +8,6 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-content: center;
     justify-content: center;
     padding: 0 50px;
     position: relative;
@@ -31,6 +30,11 @@
 
     .block-description {
       font-size: 1.2rem;
+    }
+
+    .highlighted-text {
+      background-color: $brand-colour;
+      padding: 0 5px;
     }
   }
 
