@@ -7,10 +7,22 @@ header {
   top: 0;
   width: 100%;
   z-index: 1111;
-  h1 {
-    font-weight: 400;
-    width: 60%;
-    margin: 0 auto;
+  display: flex;
+  justify-content: center;
+
+  .header-info {
+    width: 55%;
+    display: flex;
+    h1 {
+      font-weight: 400;
+      align-self: flex-start;
+      flex: 1;
+    }
+
+    .user-pref-button {
+      background-color: $brand-colour;
+      border: none;
+    }
   }
 }
 

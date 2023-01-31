@@ -10,11 +10,25 @@ import { DataService } from './services/data.service';
 })
 export class AppComponent implements OnInit {
   public blockData$: Observable<BlockParagraph[]>;
-
+  public isLightMode: boolean = true;
+  public userPreference: string | null;
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
     // instead of this, I could save blockData$ as BlockParagraph[] and assign it in the subscribe of getParagraphData()
     this.blockData$ = this.dataService.getParagraphData();
+    this.userPreference = localStorage.getItem('themePref');
+
+    this.isLightMode =
+      this.userPreference === 'dark' || this.userPreference === null
+        ? true
+        : false;
+  }
+
+  toggleUserPref(): void {
+    const themePref = this.isLightMode ? 'light' : 'dark';
+
+    localStorage.setItem('themePref', themePref);
+    this.isLightMode = !this.isLightMode;
   }
 }
