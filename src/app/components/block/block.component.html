@@ -1,0 +1,23 @@
+<div
+  class="block-container"
+  [ngClass]="blockData.reverseLayout ? 'reverse-block' : ''"
+>
+  <div class="block-info">
+    <h3 class="block-title">{{ blockData.title }}</h3>
+    <span class="block-description">{{ blockData.description }}</span>
+
+    <svg class="blob" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <path
+        fill="#e4e4e4"
+        [attr.d]="svgPoints"
+        transform="translate(100 100)"
+      />
+    </svg>
+  </div>
+  <div class="block-image">
+    <img
+      src="../../../assets/images/{{ blockData.imageUrl }}"
+      alt="Block Image"
+    />
+  </div>
+</div>
