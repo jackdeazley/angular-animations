@@ -1,4 +1,14 @@
 <header>
-  <h1 class="header-title"> Tepeo </h1>
+  <div class="header-info">
+    <h1 class="header-title"> Tepeo </h1>
+    <button class="user-pref-button" (click)="toggleUserPref()"
+      ><span>Switch to {{ isLightMode ? 'light' : 'dark' }} mode</span></button
+    >
+  </div>
 </header>
-<div class="body-container"> test </div>
+
+<div class="body-container">
+  <div class="block-data" *ngFor="let block of blockData$ | async; index as i">
+    <app-block [blockData]="block"></app-block>
+  </div>
+</div>

@@ -6,10 +6,23 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
-  h1 {
-    font-weight: 400;
-    width: 60%;
-    margin: 0 auto;
+  z-index: 1111;
+  display: flex;
+  justify-content: center;
+
+  .header-info {
+    width: 55%;
+    display: flex;
+    h1 {
+      font-weight: 400;
+      align-self: flex-start;
+      flex: 1;
+    }
+
+    .user-pref-button {
+      background-color: $brand-colour;
+      border: none;
+    }
   }
 }
 
@@ -17,4 +30,8 @@ header {
   width: 60%;
   margin: 0 auto;
   padding-top: 80px;
+
+  .block-data {
+    margin: 50px 0;
+  }
 }
