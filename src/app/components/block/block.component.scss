@@ -4,6 +4,10 @@
   display: flex;
   padding: 50px 0;
 
+  @media screen and (max-width: $tablet-screen) {
+    flex-direction: column;
+  }
+
   .block-info {
     flex: 1;
     display: flex;
@@ -35,21 +39,59 @@
     .highlighted-text {
       background-color: $brand-colour;
       padding: 0 5px;
+      display: inline-block;
+      opacity: 0;
     }
   }
 
   .block-image {
     flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     img {
       width: 100%;
       height: 450px;
       border-radius: 25%;
       object-fit: cover;
+
+      @media screen and (max-width: $laptop-screen) {
+        height: auto;
+      }
+
+      @media screen and (max-width: $tablet-screen) {
+        margin: 20px 0;
+      }
     }
   }
 }
 
 .reverse-block {
   flex-direction: row-reverse;
+
+  @media screen and (max-width: $tablet-screen) {
+    flex-direction: column-reverse;
+  }
+}
+
+// animations
+
+.fadeInUp {
+  animation-name: fadeUp;
+}
+
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeUp {
+  0% {
+    transform: translate(0px, 100px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+    opacity: 1;
+  }
 }
